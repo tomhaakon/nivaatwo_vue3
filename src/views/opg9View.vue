@@ -4,16 +4,13 @@
       <div v-for="(item, index) in myEpicArray" :key="index">
         <div
           v-if="item.visMeg === 'ja'"
-          class="drop-shadow-md mb-4 w-40 py-5 bg-slate-300"
+          class="drop-shadow-md mb-4 w-28 py-5 bg-slate-300"
         >
-          <button class="font-bold text-xl">{{ item.title }}</button>
-          <p>id:{{ index }}</p>
-          <p>{{ item.description }}</p>
           <button
             @click="openModal(item)"
-            class="drop-shadow-sm p-2 bg-slate-200"
+            class="drop-shadow-sm p-2 bg-slate-200 text-xl"
           >
-            Open modal
+            {{ item.title }}
           </button>
         </div>
       </div>
