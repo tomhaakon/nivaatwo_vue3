@@ -50,7 +50,7 @@ import Table from "@/components/Table.vue";
 
 // import data
 import jsonData from "@/json/cars.json";
-import { stringifyExpression } from "@vue/compiler-core";
+
 const myData = ref(jsonData);
 
 // modal
