@@ -1,25 +1,10 @@
 <template>
-  <div>
-    <button
-      id="showModal"
-      @click="showModal = true"
-      class="modal-default-button"
-    >
-      klikk her
-    </button>
-  </div>
-  <p>hei</p>
   <dialogWrapper />
 </template>
 
 <script setup>
 import { ref } from "vue";
 import dialogWrapper from "../dialogs/myDialog.vue";
-const app = Vue.createApp () => {
-  showModal: false,
-};
-app.component("modal", { template: "#modal-template" });
-app.mount("#app");
 </script>
 
 <!-- oppgave 7 & 8
