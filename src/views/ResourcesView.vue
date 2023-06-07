@@ -12,9 +12,11 @@
     <table class="bg-neutral-100 w-full">
       <thead>
         <tr class="shadow-md text-left">
-          <th @click="sortData('title')">Title &#8597;</th>
-          <th @click="sortData('description')">Description &#8597;</th>
-          <th @click="sortData('link')">Link &#8597;</th>
+          <th class="w-1/4" @click="sortData('title')">Title &#8597;</th>
+          <th class="w-1/4" @click="sortData('description')">
+            Description &#8597;
+          </th>
+          <th class="w-1/4" @click="sortData('link')">Link &#8597;</th>
           <th>
             <!-- søk input -->
             <div>
@@ -22,23 +24,23 @@
                 type="search"
                 placeholder="trykk her for å søke"
                 v-model="search"
-                class="bg-neutral-100 w-full"
+                class="bg-neutral-100 p-2"
               />
               <div
                 v-for="entry in (filteredData, sortedData)"
                 :key="entry.id"
               ></div>
             </div>
-            <!-- søk input slutt -->
+            <!--  slutt søk input -->
           </th>
         </tr>
       </thead>
       <tbody v-for="car in filteredData">
         <tr>
-          <td class="w-1/4">{{ car.title }}</td>
-          <td class="w-1/4">{{ car.description }}</td>
-          <td class="w-1/4">{{ car.link }}</td>
-          <td class="w-1/4">knapp</td>
+          <td>{{ car.title }}</td>
+          <td>{{ car.description }}</td>
+          <td>{{ car.link }}</td>
+          <td>knapp</td>
         </tr>
       </tbody>
     </table>
@@ -65,19 +67,10 @@ const blabla = ref("");
 const search = ref("");
 const filteredData = computed(() => {
   return myData.value.filter((car) => {
-    return car.title.toLowerCase().includes(search.value.toLowerCase());
+    const searchData = car.title + car.description + car.link;
+    return searchData.toLowerCase().includes(search.value.toLowerCase());
   });
 });
 
 // sortering
-const sortedData = ref("");
-const sortList = computed(() => {
-  if (this.sortedbyASC) {
-    this.sortedData.sort((x, y) => (x[sortBy] > y[sortBy] ? -1 : 1));
-    this.sortedbyASC = false;
-  } else {
-    this.sortedData.sort((x, y) => (x[sortBy] < y[sortBy] ? -1 : 1));
-    this.sortedbyASC = true;
-  }
-});
 </script>
