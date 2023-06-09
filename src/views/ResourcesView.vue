@@ -8,8 +8,8 @@
   ></Table> -->
 
   <!-- tabell -->
-  <div class="p-20">
-    <table class="bg-neutral-100 w-full">
+  <div class="p-20 h-screen">
+    <table class="bg-neutral-100 w-full" ref="tableContainer">
       <thead>
         <tr class="shadow-md text-left">
           <th @click="sortData('title')" class="cursor-pointer">
@@ -26,7 +26,7 @@
                 type="search"
                 placeholder="trykk her for å søke"
                 v-model="search"
-                class="bg-neutral-100 w-full p-2 indent-1 font-thin"
+                class="bg-neutral-100 w-full p-2 indent-1 font-normal"
               />
               <div v-for="entry in sortedData" :key="entry.id"></div>
             </div>
@@ -60,12 +60,18 @@
   </div>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 // import Table from "@/components/Table.vue";
 
 // import data
 import jsonData from "@/json/cars.json";
+
+// refs
 const myData = ref(jsonData);
+const tableContainer = ref(null);
+const expandedRowId = ref(null);
+const search = ref("");
+const sortParam = ref(""); // Selected sorting parameter
 
 // modal
 // const showModal = ref(false);
@@ -77,7 +83,6 @@ const myData = ref(jsonData);
 
 // search
 
-const search = ref("");
 const searchedData = computed(() => {
   return myData.value.sort().filter((item) => {
     // søke kun på title-felt og description-felt
@@ -85,8 +90,6 @@ const searchedData = computed(() => {
     return searchAbleData.toLowerCase().includes(search.value.toLowerCase());
   });
 });
-
-const sortParam = ref(""); // Selected sorting parameter
 
 // Computed property for sorted data
 const sortedData = computed(() => {
@@ -108,8 +111,7 @@ const sortData = (sortBy) => {
   sortParam.value = sortBy;
 };
 
-const expandedRowId = ref(null);
-
+// open row
 const triggerExpandRow = (id) => {
   if (expandedRowId.value === id) {
     expandedRowId.value = null;
@@ -117,4 +119,23 @@ const triggerExpandRow = (id) => {
     expandedRowId.value = id;
   }
 };
+
+// Function to handle clicking outside the table
+const handleOutsideClick = (event) => {
+  console.log(event.target);
+  if (!tableContainer.value.contains(event.target)) {
+    console.log("funke du?");
+    expandedRowId.value = null; // Collapse the expanded row
+  }
+};
+
+// Add event listener to the document body
+onMounted(() => {
+  document.body.addEventListener("click", handleOutsideClick);
+});
+
+// Remove event listener when the component is unmounted
+onUnmounted(() => {
+  document.body.removeEventListener("click", handleOutsideClick);
+});
 </script>
