@@ -1,32 +1,37 @@
-[
-  {
-    "id": 1,
-    "title": "Audi a3",
-    "description": "2006 modell mørkeblå",
-    "link": "bilde1.jpg"
-  },
-  {
-    "id": 2,
-    "title": "Golf",
-    "description": "2012 modell grå",
-    "link": "bilde2.jpg"
-  },
-  {
-    "id": 3,
-    "title": "Camaro",
-    "description": "1978 modell mørkeblå",
-    "link": "bilde3.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Dodge Ram",
-    "description": "1999 modell svart",
-    "link": "bilde4.jpg"
-  },
-  {
-    "id": 5,
-    "title": "Opel Astra",
-    "description": "1997 modell hvit",
-    "link": "bilde5.jpg"
-  }
-]
+{
+  "sortBy": "",
+  "sortDirection": "",
+  "searchTerm": "",
+  "items": [
+    {
+      "id": 1,
+      "title": "Audi a3",
+      "description": "2006 modell mørkeblå",
+      "link": "bilde1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Golf",
+      "description": "2012 modell grå",
+      "link": "bilde2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Camaro",
+      "description": "1978 modell mørkeblå",
+      "link": "bilde3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Dodge Ram",
+      "description": "1999 modell svart",
+      "link": "bilde4.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Opel Astra",
+      "description": "1997 modell hvit",
+      "link": "bilde5.jpg"
+    }
+  ]
+}
