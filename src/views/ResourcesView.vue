@@ -122,7 +122,6 @@ const triggerExpandRow = (id) => {
 
 // Function to handle clicking outside the table
 const handleOutsideClick = (event) => {
-  console.log(event.target);
   if (!tableContainer.value.contains(event.target)) {
     console.log("funke du?");
     expandedRowId.value = null; // Collapse the expanded row
