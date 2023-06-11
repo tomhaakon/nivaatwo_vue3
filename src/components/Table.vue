@@ -1,6 +1,7 @@
 <template>
   <!-- root element -->
   <p>import ResourcesView.vue OK</p>
+
   <!-- <Table
     :showModal="showModal"
     :blabla="blabla"
@@ -62,16 +63,19 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 
-// import data
-import jsonData from "../json/cars.json";
-
 // refs
-const myData = ref(jsonData);
+
+let myData = ref(props.tableData);
 const tableContainer = ref(null);
 const expandedRowId = ref(null);
 const search = ref("");
 const sortParam = ref(""); // Selected sorting parameter
 
+const props = defineProps({
+  tableData: {
+    type: Object,
+  },
+});
 // modal
 // const showModal = ref(false);
 // const openModal = (item) => {
