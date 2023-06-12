@@ -1,37 +1,149 @@
 [
   {
     "id": 1,
-    "title": "Audi a3",
-    "description": "2006 modell mørkeblå",
-    "subValue": "car1",
-    "link": "bilde1.jpg"
+    "title": "Toyota Camry",
+    "description": "The Toyota Camry is a reliable and fuel-efficient sedan.",
+    "subValue": 25000,
+    "link": "https://www.example.com/toyota-camry"
   },
   {
     "id": 2,
-    "title": "Golf",
-    "description": "2012 modell grå",
-    "subValue": "car2",
-    "link": "bilde2.jpg"
+    "title": "Honda Civic",
+    "description": "The Honda Civic is a popular compact car known for its reliability and resale value.",
+    "subValue": 22000,
+    "link": "https://www.example.com/honda-civic"
   },
   {
     "id": 3,
-    "title": "Camaro",
-    "description": "1978 modell mørkeblå",
-    "subValue": "car3",
-    "link": "bilde3.jpg"
+    "title": "Ford Mustang",
+    "description": "The Ford Mustang is an iconic sports car with a powerful engine and sleek design.",
+    "subValue": 35000,
+    "link": "https://www.example.com/ford-mustang"
   },
   {
     "id": 4,
-    "title": "Dodge Ram",
-    "description": "1999 modell svart",
-    "subValue": "car4",
-    "link": "bilde4.jpg"
+    "title": "Chevrolet Corvette",
+    "description": "The Chevrolet Corvette is a legendary American sports car with impressive performance.",
+    "subValue": 60000,
+    "link": "https://www.example.com/chevrolet-corvette"
   },
   {
     "id": 5,
-    "title": "Opel Astra",
-    "description": "1997 modell hvit",
-    "subValue": "car5",
-    "link": "bilde5.jpg"
+    "title": "Tesla Model S",
+    "description": "The Tesla Model S is an all-electric luxury sedan with cutting-edge technology.",
+    "subValue": 80000,
+    "link": "https://www.example.com/tesla-model-s"
+  },
+  {
+    "id": 6,
+    "title": "BMW 3 Series",
+    "description": "The BMW 3 Series is a sporty and luxurious compact executive car.",
+    "subValue": 40000,
+    "link": "https://www.example.com/bmw-3-series"
+  },
+  {
+    "id": 7,
+    "title": "Mercedes-Benz E-Class",
+    "description": "The Mercedes-Benz E-Class is a sophisticated and comfortable midsize luxury car.",
+    "subValue": 55000,
+    "link": "https://www.example.com/mercedes-e-class"
+  },
+  {
+    "id": 8,
+    "title": "Audi A4",
+    "description": "The Audi A4 is a well-rounded and elegant luxury sedan with advanced technology.",
+    "subValue": 45000,
+    "link": "https://www.example.com/audi-a4"
+  },
+  {
+    "id": 9,
+    "title": "Nissan Rogue",
+    "description": "The Nissan Rogue is a popular compact SUV with spacious interiors and good fuel efficiency.",
+    "subValue": 28000,
+    "link": "https://www.example.com/nissan-rogue"
+  },
+  {
+    "id": 10,
+    "title": "Jeep Wrangler",
+    "description": "The Jeep Wrangler is a rugged and capable off-road SUV known for its iconic design.",
+    "subValue": 35000,
+    "link": "https://www.example.com/jeep-wrangler"
+  },
+  {
+    "id": 11,
+    "title": "Subaru Outback",
+    "description": "The Subaru Outback is a versatile crossover SUV with excellent safety features.",
+    "subValue": 32000,
+    "link": "https://www.example.com/subaru-outback"
+  },
+  {
+    "id": 12,
+    "title": "Toyota Corolla",
+    "description": "The Toyota Corolla is a popular and reliable compact car known for its fuel efficiency and practicality.",
+    "subValue": 22000,
+    "link": "https://www.example.com/toyota-corolla"
+  },
+  {
+    "id": 13,
+    "title": "Honda Accord",
+    "description": "The Honda Accord is a well-rounded midsize sedan with a comfortable ride and spacious interior.",
+    "subValue": 25000,
+    "link": "https://www.example.com/honda-accord"
+  },
+  {
+    "id": 14,
+    "title": "Ford F-150",
+    "description": "The Ford F-150 is a best-selling pickup truck known for its versatility and strong towing capabilities.",
+    "subValue": 35000,
+    "link": "https://www.example.com/ford-f150"
+  },
+  {
+    "id": 15,
+    "title": "Chevrolet Silverado",
+    "description": "The Chevrolet Silverado is a full-size pickup truck that offers powerful performance and a comfortable cabin.",
+    "subValue": 40000,
+    "link": "https://www.example.com/chevrolet-silverado"
+  },
+  {
+    "id": 16,
+    "title": "Tesla Model 3",
+    "description": "The Tesla Model 3 is an all-electric sedan with impressive range and advanced autonomous driving features.",
+    "subValue": 50000,
+    "link": "https://www.example.com/tesla-model3"
+  },
+  {
+    "id": 17,
+    "title": "BMW 5 Series",
+    "description": "The BMW 5 Series is a luxurious midsize sedan with a powerful engine and refined driving experience.",
+    "subValue": 55000,
+    "link": "https://www.example.com/bmw-5-series"
+  },
+  {
+    "id": 18,
+    "title": "Mercedes-Benz C-Class",
+    "description": "The Mercedes-Benz C-Class is a stylish and upscale compact luxury sedan with cutting-edge technology.",
+    "subValue": 45000,
+    "link": "https://www.example.com/mercedes-c-class"
+  },
+  {
+    "id": 19,
+    "title": "Audi Q5",
+    "description": "The Audi Q5 is a premium compact SUV with a well-crafted interior and a smooth ride.",
+    "subValue": 40000,
+    "link": "https://www.example.com/audi-q5"
+  },
+  {
+    "id": 20,
+    "title": "Nissan Altima",
+    "description": "The Nissan Altima is a comfortable midsize sedan with good fuel efficiency and advanced safety features.",
+    "subValue": 28000,
+    "link": "https://www.example.com/nissan-altima"
+  },
+  {
+    "id": 21,
+    "title": "Jeep Grand Cherokee",
+    "description": "The Jeep Grand Cherokee is a spacious and capable midsize SUV with off-road prowess and a luxurious interior.",
+    "subValue": 40000,
+    "link": "https://www.example.com/jeep-grand-cherokee"
   }
 ]
