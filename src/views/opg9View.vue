@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <div>
-      <div v-for="(item, index) in myEpicArray" :key="index">
-        <div
-          v-if="item.visMeg === 'ja'"
-          class="drop-shadow-md mb-4 w-28 py-5 bg-slate-300"
-        >
-          <button
-            @click="openModal(item)"
-            class="drop-shadow-sm p-2 bg-slate-200 text-xl"
-          >
-            {{ item.title }}
-          </button>
-        </div>
-      </div>
-    </div>
+  <div
+    v-for="(item, index) in myEpicArray"
+    :key="index"
+    v-if="item.visMeg === 'ja'"
+    class="drop-shadow-md mb-4 w-28 py-5 bg-slate-300"
+  >
+   
+      <button
+        @click="openModal(item)"
+        class="relative drop-shadow-sm p-2 bg-slate-200 text-xl"
+      >
+        {{ item.title }}
+      </button>
+   
   </div>
+
   <MyDialog
     :showModal="showModal"
     :blabla="blabla"

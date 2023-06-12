@@ -1,13 +1,13 @@
 <template>
   <!-- tabell -->
-  <div class="p-20 h-screen">
+  <div class="p-20">
     <!-- søk input -->
     <div>
       <input
         type="search"
         placeholder="trykk her for å søke"
         v-model="search"
-        class="bg-neutral-100 p-2 indent-1 font-normal mb-5 float-right"
+        class="bg-neutral-100 p-2 indent-1 font-normal mb-5"
       />
       <div v-for="entry in sortedData" :key="entry.id"></div>
     </div>
@@ -23,32 +23,32 @@
         </tr>
       </thead>
       <tbody
-        v-for="car in sortedData"
-        :key="car.id"
+        v-for="item in sortedData"
+        :key="item.id"
         class="divide-y-4 shadow-inner bg-white cursor-pointer"
       >
-        <tr @click="triggerExpandRow(car.id)">
-          <td class="w-1/3">{{ car.title }}</td>
+        <tr @click="triggerExpandRow(item.id)">
+          <td class="w-1/3">{{ item.title }}</td>
 
-          <td class="w-1/3">{{ car.link }}</td>
+          <td class="w-1/3 overflow-hidden">{{ item.link }}</td>
           <td class="w-1/3">
-            <button @click.stop="openModal(car)">more info</button>
+            <button @click.stop="openModal(item)">more info</button>
           </td>
         </tr>
         <tr
-          v-if="expandedRowId === car.id"
-          class="bg-neutral-100 text-slate-600 italic indent-3 cursor-text"
+          v-if="expandedRowId === item.id"
+          class="bg-neutral-100 text-slate-600 italic cursor-text col-span-2"
         >
-          {{
-            car.subValue
-          }}
+          <td colspan="3" class="p-2 pb-5">
+            {{ item.description }}
+          </td>
         </tr>
       </tbody>
     </table>
     <div>
       <tableDialog
         :showModal="showModal"
-        :blabla="blabla"
+        :dialogProps="dialogProps"
         @closeModal="showModal = !showModal"
       ></tableDialog>
     </div>
@@ -72,10 +72,10 @@ const props = defineProps({
 // modal
 const showModal = ref(false);
 const openModal = (item) => {
-  blabla.value = item;
+  dialogProps.value = item;
   showModal.value = true;
 };
-const blabla = ref("");
+const dialogProps = ref("");
 
 // search
 
