@@ -1,5 +1,7 @@
 <template>
-  <Table :tableData="jsonData"></Table>
+  <main>
+    <Table :tableData="jsonData" />
+  </main>
 </template>
 <script setup>
 import { ref } from "vue";

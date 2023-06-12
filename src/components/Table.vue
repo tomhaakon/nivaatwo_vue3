@@ -1,13 +1,16 @@
 <template>
   <!-- tabell -->
-  <div class="p-20">
+  <div class="">
     <!-- søk input -->
+    <div>
+      <h1 class="text-xl font-bold text-slate-500 uppercase">Table of cars</h1>
+    </div>
     <div>
       <input
         type="search"
         placeholder="trykk her for å søke"
         v-model="search"
-        class="bg-neutral-100 p-2 indent-1 font-normal mb-5"
+        class="bg-neutral-100 p-2 indent-1 font-normal mb-5 float-right"
       />
       <div v-for="entry in sortedData" :key="entry.id"></div>
     </div>
@@ -15,23 +18,25 @@
     <table class="bg-neutral-100 w-full" ref="tableContainer">
       <thead>
         <tr class="shadow-md text-left">
-          <th @click="sortData('title')" class="cursor-pointer">
+          <th @click.stop="sortData('title')" class="cursor-pointer pl-4">
             Title &#8597;
           </th>
 
-          <th @click="sortData('link')" class="cursor-pointer">Link &#8597;</th>
+          <th @click.stop="sortData('link')" class="cursor-pointer pl-4">
+            Link &#8597;
+          </th>
         </tr>
       </thead>
       <tbody
         v-for="item in sortedData"
         :key="item.id"
-        class="divide-y-4 shadow-inner bg-white cursor-pointer"
+        class="divide-y-4 shadow-inner bg-white cursor-pointer whitespace-nowrap"
       >
         <tr @click="triggerExpandRow(item.id)">
-          <td class="w-1/3">{{ item.title }}</td>
+          <td class="w-64 pl-5">{{ item.title }}</td>
 
-          <td class="w-1/3 overflow-hidden">{{ item.link }}</td>
-          <td class="w-1/3">
+          <td class="w-full overflow-hidden pl-4">{{ item.link }}</td>
+          <td class="w-48 text-right pr-5">
             <button @click.stop="openModal(item)">more info</button>
           </td>
         </tr>
@@ -39,7 +44,7 @@
           v-if="expandedRowId === item.id"
           class="bg-neutral-100 text-slate-600 italic cursor-text col-span-2"
         >
-          <td colspan="3" class="p-2 pb-5">
+          <td colspan="3" class="pl-5">
             {{ item.description }}
           </td>
         </tr>
@@ -75,14 +80,14 @@ const openModal = (item) => {
   dialogProps.value = item;
   showModal.value = true;
 };
-const dialogProps = ref("");
+const dialogProps = ref({});
 
 // search
 
 const searchedData = computed(() => {
   return myData.value.sort().filter((item) => {
     // søke kun på title-felt og description-felt
-    const searchAbleData = item.title + item.description + item.link;
+    const searchAbleData = item.title;
     return searchAbleData.toLowerCase().includes(search.value.toLowerCase());
   });
 });

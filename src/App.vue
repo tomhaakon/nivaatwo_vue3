@@ -1,13 +1,13 @@
 <template>
-  <navBar class="mb-4" />
+  <NavBar class="" />
 
-  <RouterView />
+  <RouterView class="p-5 mb-32" />
 
-  <footerBar />
+  <FooterBar class="" />
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import navBar from "@/components/nav/navBar.vue";
-import footerBar from "@/components/nav/footer.vue";
+import { RouterView } from "vue-router";
+import NavBar from "@/components/nav/NavBar.vue";
+import FooterBar from "@/components/nav/Footer.vue";
 </script>
