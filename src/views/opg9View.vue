@@ -25,7 +25,7 @@
 
 <script setup>
 import { ref } from "vue";
-import MyDialog from "../components/dialogs/MyDialog.vue";
+import MyDialog from "../components/dialogs/TableDialog.vue";
 const showModal = ref(false);
 const blabla = ref("");
 const openModal = (item) => {

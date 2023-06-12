@@ -1,38 +1,25 @@
 <template>
-  <!-- root element -->
-  <p>import ResourcesView.vue OK</p>
-
-  <!-- <Table
-    :showModal="showModal"
-    :blabla="blabla"
-    @closeModal="showModal = !showModal"
-  ></Table> -->
-
   <!-- tabell -->
   <div class="p-20 h-screen">
+    <!-- søk input -->
+    <div>
+      <input
+        type="search"
+        placeholder="trykk her for å søke"
+        v-model="search"
+        class="bg-neutral-100 p-2 indent-1 font-normal mb-5 float-right"
+      />
+      <div v-for="entry in sortedData" :key="entry.id"></div>
+    </div>
+    <!-- søk input slutt -->
     <table class="bg-neutral-100 w-full" ref="tableContainer">
       <thead>
         <tr class="shadow-md text-left">
           <th @click="sortData('title')" class="cursor-pointer">
             Title &#8597;
           </th>
-          <th @click="sortData('description')" class="cursor-pointer">
-            Description &#8597;
-          </th>
+
           <th @click="sortData('link')" class="cursor-pointer">Link &#8597;</th>
-          <th>
-            <!-- søk input -->
-            <div>
-              <input
-                type="search"
-                placeholder="trykk her for å søke"
-                v-model="search"
-                class="bg-neutral-100 w-full p-2 indent-1 font-normal"
-              />
-              <div v-for="entry in sortedData" :key="entry.id"></div>
-            </div>
-            <!-- søk input slutt -->
-          </th>
         </tr>
       </thead>
       <tbody
@@ -41,12 +28,12 @@
         class="divide-y-4 shadow-inner bg-white cursor-pointer"
       >
         <tr @click="triggerExpandRow(car.id)">
-          <td class="w-1/4">{{ car.title }}</td>
-          <td class="w-1/4">
-            {{ car.description }}
+          <td class="w-1/3">{{ car.title }}</td>
+
+          <td class="w-1/3">{{ car.link }}</td>
+          <td class="w-1/3">
+            <button @click.stop="openModal(car)">more info</button>
           </td>
-          <td class="w-1/4">{{ car.link }}</td>
-          <td class="w-1/4">knapp</td>
         </tr>
         <tr
           v-if="expandedRowId === car.id"
@@ -58,18 +45,24 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <tableDialog
+        :showModal="showModal"
+        :blabla="blabla"
+        @closeModal="showModal = !showModal"
+      ></tableDialog>
+    </div>
   </div>
 </template>
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-
+import tableDialog from "@/components/dialogs/TableDialog.vue";
 // refs
-
-let myData = ref(props.tableData);
 const tableContainer = ref(null);
 const expandedRowId = ref(null);
 const search = ref("");
 const sortParam = ref(""); // Selected sorting parameter
+const myData = ref(props.tableData);
 
 const props = defineProps({
   tableData: {
@@ -77,12 +70,12 @@ const props = defineProps({
   },
 });
 // modal
-// const showModal = ref(false);
-// const openModal = (item) => {
-//   blabla.value = item;
-//   showModal.value = true;
-// };
-// const blabla = ref("");
+const showModal = ref(false);
+const openModal = (item) => {
+  blabla.value = item;
+  showModal.value = true;
+};
+const blabla = ref("");
 
 // search
 

@@ -4,7 +4,7 @@
 
 <script setup>
 import { ref } from "vue";
-import dialogWrapper from "../dialogs/MyDialog.vue";
+import dialogWrapper from "../dialogs/TableDialog.vue";
 </script>
 
 <!-- oppgave 7 & 8
