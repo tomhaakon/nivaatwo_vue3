@@ -41,15 +41,17 @@
         <LoginDialog
           :isLoginDialogOpen="isLoginDialogOpen"
           @close-dialog="closeLoginDialog"
-          class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-50"
+          @login-success="loginStatus"
+          class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
         />
         <RegDialog
           :isRegDialogOpen="isRegDialogOpen"
           @close-dialog="closeRegDialog"
-          class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-50"
+          class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
         />
       </div>
     </nav>
+    <div v-if="loginSuccess">Hei</div>
     <div
       v-if="isLoginDialogOpen || isRegDialogOpen"
       class="fixed inset-0 bg-black opacity-50 z-10"
@@ -67,7 +69,8 @@ const dropdownMenu = ref(null);
 const isDropdownOpen = ref(false);
 const isLoginDialogOpen = ref(false);
 const isRegDialogOpen = ref(false);
-const emit = defineEmits([""]);
+
+const loginSuccess = ref(false);
 
 // dropdown
 const toggleDropdown = () => {
@@ -101,5 +104,9 @@ const closeLoginDialog = () => {
 };
 const closeRegDialog = () => {
   isRegDialogOpen.value = false;
+};
+const loginStatus = () => {
+  loginSuccess.value = true;
+  console.log(loginSuccess.value);
 };
 </script>

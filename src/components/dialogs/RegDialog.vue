@@ -1,14 +1,12 @@
 <template>
   <div v-if="isRegDialogOpen" class="z-10">
-    <div class="grid grid-cols-1 grid-rows-4 gap-2">
+    <div class="grid grid-cols-1 grid-rows-6 gap-2">
       <h1 class="text-2xl uppercase text-slate-200 font-bold">Register</h1>
-      <input placeholder="First name" class="pl-1" /><input
-        placeholder="Last name"
-        class="pl-1"
-      /><input placeholder="Email" class="pl-1" /><input
-        placeholder="Password"
-        class="pl-1"
-      />
+      <input placeholder="First name" class="pl-1" />
+      <input placeholder="Last name" class="pl-1" />
+      <input placeholder="Email" class="pl-1" />
+      <input placeholder="Password" class="pl-1" />
+      <input placeholder="again" class="pl-1" />
       <button
         @click="closeDialog()"
         class="bg-slate-400 uppercase text-lg font-bold text-slate-100"
