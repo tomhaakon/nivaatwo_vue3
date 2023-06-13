@@ -1,1 +1,6 @@
-<template><p>cards</p></template>
+<template>
+  <Cards />
+</template>
+<script setup>
+import Cards from "@/components/Cards.vue";
+</script>
