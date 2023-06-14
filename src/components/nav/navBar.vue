@@ -1,20 +1,14 @@
 <template>
   <main>
     <nav>
-      <div
-        class="h-20 w-full bg-slate-500 text-2xl uppercase text-white font-semibold"
-      >
+      <div class="h-20 w-full bg-slate-500 text-2xl uppercase text-white font-semibold">
         <div class="w-full flex place-content-center pt-0">
           <router-link to="/" class="px-5 pt-2"
-            ><span class="text-5xl p-0 text-slate-800"
-              >&#9284;</span
-            ></router-link
+            ><span class="text-5xl p-0 text-slate-800">&#9284;</span></router-link
           >
-          <router-link to="/resources" class="px-5 pt-5">
-            resources
-          </router-link>
+          <router-link to="/resources" class="px-5 pt-5"> resources </router-link>
           <router-link to="/cards" class="px-5 pt-5"> cards </router-link>
-          <p class="px-5 pt-5" @click.stop="toggleDropdown">profile</p>
+          <p class="px-5 pt-5 cursor-pointer" @click.stop="toggleDropdown">profile</p>
         </div>
       </div>
       <!-- dropdown meny -->
@@ -27,10 +21,7 @@
             >
               login
             </button>
-            <button
-              class="h-10 w-32 uppercase text-white font-bold"
-              @click.stop="openRegDialog()"
-            >
+            <button class="h-10 w-32 uppercase text-white font-bold" @click.stop="openRegDialog()">
               register
             </button>
           </div>
@@ -51,9 +42,12 @@
         />
       </div>
     </nav>
-    <div v-if="loginSuccess">Hei</div>
+    <!-- Notifies etc -->
+    <div v-if="loginSuccess" ref="loginRef" class="w-full bg-green-500 text-center absolute z-30">
+      <h1 class="font-bold pb-2 text-3xl text-white">Login sucess!</h1>
+    </div>
     <div
-      v-if="isLoginDialogOpen || isRegDialogOpen"
+      v-if="isLoginDialogOpen || isRegDialogOpen || loginSuccess"
       class="fixed inset-0 bg-black opacity-50 z-10"
     ></div>
   </main>
@@ -66,6 +60,7 @@ import RegDialog from "@/components/dialogs/RegDialog.vue";
 
 // refs
 const dropdownMenu = ref(null);
+const loginRef = ref(null);
 const isDropdownOpen = ref(false);
 const isLoginDialogOpen = ref(false);
 const isRegDialogOpen = ref(false);
@@ -88,6 +83,9 @@ const handleClickOutside = (event) => {
   if (dropdownMenu.value && !dropdownMenu.value.contains(event.target)) {
     isDropdownOpen.value = false;
   }
+  if (loginRef.value && !loginRef.value.contains(event.target)) {
+    loginSuccess.value = false;
+  }
 };
 // open dialogs
 const openLoginDialog = () => {
@@ -107,6 +105,7 @@ const closeRegDialog = () => {
 };
 const loginStatus = () => {
   loginSuccess.value = true;
-  console.log(loginSuccess.value);
+
+  isLoginDialogOpen.value = false;
 };
 </script>

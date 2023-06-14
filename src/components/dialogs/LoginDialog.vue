@@ -5,7 +5,7 @@
       <input placeholder="username" class="pl-1" />
       <input placeholder="password" class="pl-1" />
       <button
-        @click="loginSuccess()"
+        @click.stop="loginSuccess()"
         class="bg-slate-400 uppercase text-lg font-bold text-slate-100"
       >
         login
@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup>
-const emit = defineEmits(["close-dialog"], ["login-success"]);
+const emit = defineEmits(["close-dialog", "login-success"]);
 const props = defineProps({
   isLoginDialogOpen: {
     type: Boolean,
@@ -28,9 +28,10 @@ const props = defineProps({
   },
 });
 const closeDialog = () => {
-  emit("close-dialog");
+  emit("close-dialog", true);
 };
 const loginSuccess = () => {
-  emit("login-success");
+  emit("login-success", true);
+  localStorage.setItem("piss", "hei");
 };
 </script>
