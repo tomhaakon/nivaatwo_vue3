@@ -27,29 +27,23 @@
           </div>
         </div>
       </div>
-      <!-- Dialoger -->
-      <div class="w-full justify-center flex">
-        <LoginDialog
-          :isLoginDialogOpen="isLoginDialogOpen"
-          @close-dialog="closeLoginDialog"
-          @login-success="loginStatus"
-          class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
-        />
-        <RegDialog
-          :isRegDialogOpen="isRegDialogOpen"
-          @close-dialog="closeRegDialog"
-          class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
-        />
-      </div>
     </nav>
-    <!-- Notifies etc -->
-    <div v-if="loginSuccess" ref="loginRef" class="w-full bg-green-500 text-center absolute z-30">
-      <h1 class="font-bold pb-2 text-3xl text-white">Login sucess!</h1>
+    <!-- Dialoger -->
+    <!-- login -->
+    <div class="w-full justify-center flex">
+      <LoginDialog
+        :isLoginDialogOpen="isLoginDialogOpen"
+        @close-dialog="closeLoginDialog"
+        class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
+      />
+      <!-- reg -->
+      <RegDialog
+        :isRegDialogOpen="isRegDialogOpen"
+        @close-dialog="closeRegDialog"
+        class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
+      />
     </div>
-    <div
-      v-if="isLoginDialogOpen || isRegDialogOpen || loginSuccess"
-      class="fixed inset-0 bg-black opacity-50 z-10"
-    ></div>
+    <!-- Notifies etc -->
   </main>
 </template>
 <script setup>
@@ -64,8 +58,6 @@ const loginRef = ref(null);
 const isDropdownOpen = ref(false);
 const isLoginDialogOpen = ref(false);
 const isRegDialogOpen = ref(false);
-
-const loginSuccess = ref(false);
 
 // dropdown
 const toggleDropdown = () => {
@@ -83,9 +75,6 @@ const handleClickOutside = (event) => {
   if (dropdownMenu.value && !dropdownMenu.value.contains(event.target)) {
     isDropdownOpen.value = false;
   }
-  if (loginRef.value && !loginRef.value.contains(event.target)) {
-    loginSuccess.value = false;
-  }
 };
 // open dialogs
 const openLoginDialog = () => {
@@ -102,10 +91,5 @@ const closeLoginDialog = () => {
 };
 const closeRegDialog = () => {
   isRegDialogOpen.value = false;
-};
-const loginStatus = () => {
-  loginSuccess.value = true;
-
-  isLoginDialogOpen.value = false;
 };
 </script>
