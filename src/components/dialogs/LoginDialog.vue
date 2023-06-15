@@ -63,7 +63,7 @@ const triggerLogin = () => {
 
     console.log("logged in");
     closeDialog();
-    // location.href = "/";
+    location.href = "/";
 
     childMethod();
   } else {

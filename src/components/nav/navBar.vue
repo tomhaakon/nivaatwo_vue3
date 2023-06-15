@@ -22,7 +22,7 @@
             </button>
           </div>
           <!-- dropdown for user that is not logged in -->
-          <div class="w-32 bg-slate-400" v-show="loggedIn === 'false' || loggedIn === null">
+          <div class="w-32 bg-slate-400" v-show="loggedIn === 'false' || loggedIn === 'null'">
             <button
               class="h-10 w-32 uppercase text-white font-bold"
               @click.stop="openLoginDialog()"
