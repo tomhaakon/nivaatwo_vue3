@@ -76,6 +76,11 @@ const fieldsCheck = () => {
     regFailed.value = true;
     errorMsg.value = "Passwords did not match";
     console.log(errorMsg.value);
+    // else if user is authentictaded
+  } else if (localStorage.getItem("is-authenticated").valueOf === true) {
+    regFailed.value = true;
+    errorMsg.value = "You cannot register while you are logged in.";
+    console.log(errorMsg.value);
     // else turn regFailed to false
   } else {
     regFailed.value = false;

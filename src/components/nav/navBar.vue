@@ -14,7 +14,15 @@
       <!-- dropdown meny -->
       <div v-show="isDropdownOpen" ref="dropdownMenu">
         <div class="w-full pl-96 flex justify-center absolute">
-          <div class="w-32 bg-slate-400">
+          <!-- dropdrown menu for user that is logged in -->
+          <div v-show="loggedIn === 'true'" class="w-32 bg-slate-400">
+            <button class="h-10 w-32 uppercase text-white font-bold">Profile</button>
+            <button class="h-10 w-32 uppercase text-white font-bold" @click="logOut()">
+              Logout
+            </button>
+          </div>
+          <!-- dropdown for user that is not logged in -->
+          <div class="w-32 bg-slate-400" v-show="loggedIn === 'false' || loggedIn === null">
             <button
               class="h-10 w-32 uppercase text-white font-bold"
               @click.stop="openLoginDialog()"
@@ -51,14 +59,17 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import LoginDialog from "@/components/dialogs/LoginDialog.vue";
 import RegDialog from "@/components/dialogs/RegDialog.vue";
+import router from "../../router";
 
 // refs
 const dropdownMenu = ref(null);
-const loginRef = ref(null);
+
 const isDropdownOpen = ref(false);
 const isLoginDialogOpen = ref(false);
 const isRegDialogOpen = ref(false);
 
+let loggedIn = ref(localStorage.getItem("is-authenticated")).value;
+console.log("loggedIn:", loggedIn);
 // dropdown
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
@@ -91,5 +102,11 @@ const closeLoginDialog = () => {
 };
 const closeRegDialog = () => {
   isRegDialogOpen.value = false;
+};
+const logOut = () => {
+  localStorage.setItem("is-authenticated", false);
+  loggedIn = false;
+  isDropdownOpen.value = false;
+  location.href = "/";
 };
 </script>
