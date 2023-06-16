@@ -16,7 +16,12 @@
         <div class="w-full pl-96 flex justify-center absolute">
           <!-- dropdrown menu for user that is logged in -->
           <div v-show="loggedIn === 'true'" class="w-32 bg-slate-400">
-            <button class="h-10 w-32 uppercase text-white font-bold">Profile</button>
+            <button
+              class="h-10 w-32 uppercase text-white font-bold"
+              @click="router.push('/profile')"
+            >
+              Profile
+            </button>
             <button class="h-10 w-32 uppercase text-white font-bold" @click="logOut()">
               Logout
             </button>

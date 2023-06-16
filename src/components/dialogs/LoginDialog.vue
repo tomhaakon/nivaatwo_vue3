@@ -6,6 +6,10 @@
       <!-- input -->
       <input type="text" v-model="unameLoginField" placeholder="username" class="pl-1" />
       <input type="password" v-model="pwdLoginField" placeholder="password" class="pl-1" />
+      <!--  error msg -->
+      <span v-if="errorMsg" class="font-bold text-red-900">
+        {{ errorMsg }}
+      </span>
       <!-- knapper -->
       <button
         @click.stop="triggerLogin()"
@@ -19,11 +23,6 @@
       >
         close
       </button>
-      <div>
-        {{ unameLoginField }} <br />
-        {{ pwdLoginField }}
-      </div>
-      <!-- testing -->
     </div>
   </div>
 </template>
@@ -32,6 +31,7 @@
 import { ref } from "vue";
 import ChildComponent from "@/components/Notify.vue";
 
+const errorMsg = ref("");
 const myChild = ref(null);
 
 const childMethod = () => {
@@ -69,7 +69,7 @@ const triggerLogin = () => {
   } else {
     localStorage.setItem("is-authenticated", false);
     emit("is-authenticated", false);
-    console.log("feil brukernanv og paswd");
+    errorMsg.value = "Wrong username or password";
   }
 };
 </script>
