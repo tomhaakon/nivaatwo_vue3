@@ -14,11 +14,12 @@
       </div>
       <div>
         <span class="font-thin">password:</span
-        ><span v-if="!hiddenPwd" class="font-thin" @click="showPassword()">
+        ><span v-if="!hiddenPwd" class="font-thin cursor-pointer" @click="showPassword()">
           <span class="font-light text-sm">(click to show password)</span>
         </span>
         <span @click="showPassword()" v-else
-          >{{ pwd }} <span class="font-light text-sm">(click again to hide)</span></span
+          >{{ pwd }}
+          <span class="font-light text-sm cursor-pointer">(click again to hide)</span></span
         >
       </div>
     </div>

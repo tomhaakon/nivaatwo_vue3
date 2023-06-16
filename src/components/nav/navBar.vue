@@ -3,9 +3,9 @@
     <nav>
       <div class="h-20 w-full bg-slate-500 text-2xl uppercase text-white font-semibold">
         <div class="w-full flex place-content-center pt-0">
-          <router-link to="/" class="px-5 pt-2"
-            ><span class="text-5xl p-0 text-slate-800">&#9284;</span></router-link
-          >
+          <router-link to="/" class="px-5 pt-2">
+            <span class="text-5xl p-0 text-slate-800">&#9284;</span>
+          </router-link>
           <router-link to="/resources" class="px-5 pt-5"> resources </router-link>
           <router-link to="/cards" class="px-5 pt-5"> cards </router-link>
           <p class="px-5 pt-5 cursor-pointer" @click.stop="toggleDropdown">profile</p>
@@ -56,7 +56,6 @@
         class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
       />
     </div>
-    <!-- Notifies etc -->
   </main>
 </template>
 <script setup>
@@ -68,13 +67,11 @@ import router from "../../router";
 
 // refs
 const dropdownMenu = ref(null);
-
 const isDropdownOpen = ref(false);
 const isLoginDialogOpen = ref(false);
 const isRegDialogOpen = ref(false);
-
 let loggedIn = ref(localStorage.getItem("is-authenticated")).value;
-console.log("loggedIn:", loggedIn);
+
 // dropdown
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
@@ -82,7 +79,6 @@ const toggleDropdown = () => {
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
 });
-
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
 });

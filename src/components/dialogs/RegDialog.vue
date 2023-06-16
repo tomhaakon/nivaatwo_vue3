@@ -60,27 +60,22 @@ const fieldsCheck = () => {
   if (regUname.value === "") {
     regFailed.value = true;
     errorMsg.value = "Username is empty";
-    console.log(errorMsg.value);
     // check if username exists
   } else if (regUname.value === localStorage.getItem("username")) {
     regFailed.value = true;
     errorMsg.value = "Username allready exists.";
-    console.log(errorMsg.value);
     // check if passwords are empty
   } else if (regPwd.value === "" || repeatRegPwd.value === "") {
     regFailed.value = true;
     errorMsg.value = "Password is empty";
-    console.log(errorMsg.value);
     // check if passwords are the same
   } else if (regPwd.value != repeatRegPwd.value) {
     regFailed.value = true;
     errorMsg.value = "Passwords did not match";
-    console.log(errorMsg.value);
     // else if user is authentictaded
   } else if (localStorage.getItem("is-authenticated").valueOf === true) {
     regFailed.value = true;
     errorMsg.value = "You cannot register while you are logged in.";
-    console.log(errorMsg.value);
     // else turn regFailed to false
   } else {
     regFailed.value = false;
@@ -91,7 +86,6 @@ const fieldsCheck = () => {
 const registerUser = () => {
   localStorage.setItem("username", regUname.value);
   localStorage.setItem("password", regPwd.value);
-  console.log("registered user:", regUname.value);
   closeDialog();
   router.push("/");
 };

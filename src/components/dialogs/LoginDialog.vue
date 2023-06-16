@@ -1,7 +1,6 @@
 <template>
-  <div v-if="isLoginDialogOpen" class="z-10">
+  <div v-if="isLoginDialogOpen">
     <div class="grid grid-cols-1 grid-rows-4 gap-2">
-      <ChildComponent ref="myChild" />
       <h1 class="text-2xl uppercase text-slate-200 font-bold">login dialog</h1>
       <!-- input -->
       <input type="text" v-model="unameLoginField" placeholder="username" class="pl-1" />
@@ -29,19 +28,11 @@
 <script setup>
 // imports
 import { ref } from "vue";
-import ChildComponent from "@/components/Notify.vue";
-
-const errorMsg = ref("");
-const myChild = ref(null);
-
-const childMethod = () => {
-  myChild.value.childMethod();
-};
 
 //refs
 const unameLoginField = ref("");
 const pwdLoginField = ref("");
-
+const errorMsg = ref("");
 //prop & emits
 const emit = defineEmits(["close-dialog", "login-success", "is-authenticated"]);
 const props = defineProps({
@@ -50,7 +41,7 @@ const props = defineProps({
     required: true,
   },
 });
-
+// functions
 const closeDialog = () => {
   emit("close-dialog", true);
 };
@@ -60,12 +51,8 @@ const triggerLogin = () => {
     pwdLoginField.value === localStorage.getItem("password")
   ) {
     localStorage.setItem("is-authenticated", true);
-
-    console.log("logged in");
     closeDialog();
     location.href = "/";
-
-    childMethod();
   } else {
     localStorage.setItem("is-authenticated", false);
     emit("is-authenticated", false);
