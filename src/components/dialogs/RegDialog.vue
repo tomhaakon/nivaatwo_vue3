@@ -2,8 +2,20 @@
   <div v-if="isRegDialogOpen" class="z-10">
     <div class="grid grid-cols-1 grid-rows-6 gap-2">
       <h1 class="text-2xl uppercase text-slate-200 font-bold">Register</h1>
-      <input required placeholder="Enter Username" type="text" v-model="regUname" class="pl-1" />
-      <input required placeholder="Enter Password" type="password" v-model="regPwd" class="pl-1" />
+      <input
+        required
+        placeholder="Enter Username"
+        type="text"
+        v-model="regUname"
+        class="pl-1"
+      />
+      <input
+        required
+        placeholder="Enter Password"
+        type="password"
+        v-model="regPwd"
+        class="pl-1"
+      />
       <input
         required
         placeholder="Repeat Password"
@@ -73,10 +85,12 @@ const fieldsCheck = () => {
     regFailed.value = true;
     errorMsg.value = "Passwords did not match";
     // else if user is authentictaded
-  } else if (localStorage.getItem("is-authenticated").valueOf === true) {
+  } else if (
+    localStorage.getItem("is-authenticated") !== null &&
+    localStorage.getItem("is-authenticated") === "true"
+  ) {
     regFailed.value = true;
     errorMsg.value = "You cannot register while you are logged in.";
-    // else turn regFailed to false
   } else {
     regFailed.value = false;
     errorMsg.value = "";
@@ -90,4 +104,7 @@ const registerUser = () => {
   router.push("/");
 };
 // localStorage.clear();
+
+
+
 </script>

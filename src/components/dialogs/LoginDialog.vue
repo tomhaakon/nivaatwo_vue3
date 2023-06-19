@@ -3,8 +3,18 @@
     <div class="grid grid-cols-1 grid-rows-4 gap-2">
       <h1 class="text-2xl uppercase text-slate-200 font-bold">login dialog</h1>
       <!-- input -->
-      <input type="text" v-model="unameLoginField" placeholder="username" class="pl-1" />
-      <input type="password" v-model="pwdLoginField" placeholder="password" class="pl-1" />
+      <input
+        type="text"
+        v-model="unameLoginField"
+        placeholder="username"
+        class="pl-1"
+      />
+      <input
+        type="password"
+        v-model="pwdLoginField"
+        placeholder="password"
+        class="pl-1"
+      />
       <!--  error msg -->
       <span v-if="errorMsg" class="font-bold text-red-900">
         {{ errorMsg }}
@@ -33,6 +43,7 @@ import { ref } from "vue";
 const unameLoginField = ref("");
 const pwdLoginField = ref("");
 const errorMsg = ref("");
+// const isLoggedIn = ref();
 //prop & emits
 const emit = defineEmits(["close-dialog", "login-success", "is-authenticated"]);
 const props = defineProps({
@@ -45,6 +56,7 @@ const props = defineProps({
 const closeDialog = () => {
   emit("close-dialog", true);
 };
+
 const triggerLogin = () => {
   if (
     unameLoginField.value === localStorage.getItem("username") &&
@@ -52,7 +64,8 @@ const triggerLogin = () => {
   ) {
     localStorage.setItem("is-authenticated", true);
     closeDialog();
-    location.href = "/";
+    emit("login-success");
+    // location = "/";
   } else {
     localStorage.setItem("is-authenticated", false);
     emit("is-authenticated", false);
