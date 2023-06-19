@@ -57,7 +57,7 @@ const errorMsg = ref("");
 const regFailed = ref(false);
 const router = useRouter();
 // props & emits
-const emit = defineEmits(["close-dialog"]);
+const emit = defineEmits(["close-dialog", "reg-success"]);
 const props = defineProps({
   isRegDialogOpen: {
     type: Boolean,
@@ -101,10 +101,7 @@ const registerUser = () => {
   localStorage.setItem("username", regUname.value);
   localStorage.setItem("password", regPwd.value);
   closeDialog();
-  router.push("/");
+  emit("reg-success");
 };
 // localStorage.clear();
-
-
-
 </script>

@@ -70,6 +70,15 @@
         You sucessfylly logged out! Bye
       </h1>
     </div>
+    <div
+      ref="regSuccessBox"
+      v-show="openRegSuccess"
+      class="w-full bg-green-500 text-center absolute z-10"
+    >
+      <h1 class="font-bold pb-2 text-3xl text-white">
+        Successfully registered new user! You can now log in.
+      </h1>
+    </div>
     <!-- Dialoger -->
     <!-- login -->
     <div class="w-full justify-center flex">
@@ -83,6 +92,7 @@
       <RegDialog
         :isRegDialogOpen="isRegDialogOpen"
         @close-dialog="closeRegDialog"
+        @reg-success="regSuccess"
         class="absolute w-80 pb-10 bg-slate-500 p-5 top-1/4 z-20"
       />
     </div>
@@ -104,6 +114,8 @@ const openLoginSuccess = ref();
 const loginSuccessBox = ref(false);
 const openLogoutSuccess = ref();
 const logoutSuccessBox = ref(false);
+const openRegSuccess = ref();
+const regSuccessBox = ref(false);
 
 let loggedIn = ref(localStorage.getItem("is-authenticated")).value;
 
@@ -114,11 +126,17 @@ const checkIfLoggedIn = () => {
 // dropdown
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
-  if (openLogoutSuccess.value || openLoginSuccess.value) {
+  if (
+    openLogoutSuccess.value ||
+    openLoginSuccess.value ||
+    openRegSuccess.value
+  ) {
     if (openLoginSuccess.value) {
       openLoginSuccess.value = false;
     } else if (openLogoutSuccess.value) {
       openLogoutSuccess.value = false;
+    } else if (openRegSuccess.value) {
+      openRegSuccess.value = false;
     }
   }
 };
@@ -162,6 +180,12 @@ const logOut = () => {
   checkIfLoggedIn();
 };
 // note
+const regSuccess = () => {
+  openRegSuccess.value = true;
+  setTimeout(() => {
+    openRegSuccess.value = false;
+  }, 3000);
+};
 const triggerLoginSuccess = () => {
   openLoginSuccess.value = true;
   setTimeout(() => {
