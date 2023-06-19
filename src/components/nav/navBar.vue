@@ -1,40 +1,52 @@
 <template>
   <main>
     <nav>
-      <div class="h-20 w-full bg-slate-500 text-2xl uppercase text-white font-semibold">
+      <div
+        class="h-20 w-full bg-slate-500 text-2xl uppercase text-white font-semibold"
+      >
         <div class="w-full flex place-content-center pt-0">
           <router-link to="/" class="px-5 pt-2">
             <span class="text-5xl p-0 text-slate-800">&#9284;</span>
           </router-link>
-          <router-link to="/resources" class="px-5 pt-5"> resources </router-link>
+          <router-link to="/resources" class="px-5 pt-5">
+            resources
+          </router-link>
           <router-link to="/cards" class="px-5 pt-5"> cards </router-link>
-          <p class="px-5 pt-5 cursor-pointer" @click.stop="toggleDropdown">profile</p>
+          <p class="px-5 pt-5 cursor-pointer" @click.stop="toggleDropdown">
+            profile
+          </p>
         </div>
       </div>
       <!-- dropdown meny -->
       <div v-show="isDropdownOpen" ref="dropdownMenu">
         <div class="w-full pl-96 flex justify-center absolute">
           <!-- dropdrown menu for user that is logged in -->
-          <div v-show="loggedIn === 'true'" class="w-32 bg-slate-400">
+          <div v-if="loggedIn === 'true'" class="w-32 bg-slate-400">
             <button
               class="h-10 w-32 uppercase text-white font-bold"
               @click="router.push('/profile')"
             >
               Profile
             </button>
-            <button class="h-10 w-32 uppercase text-white font-bold" @click="logOut()">
+            <button
+              class="h-10 w-32 uppercase text-white font-bold"
+              @click="logOut()"
+            >
               Logout
             </button>
           </div>
           <!-- dropdown for user that is not logged in -->
-          <div class="w-32 bg-slate-400" v-show="loggedIn === 'false' || loggedIn === 'null'">
+          <div class="w-32 bg-slate-400" v-else>
             <button
               class="h-10 w-32 uppercase text-white font-bold"
               @click.stop="openLoginDialog()"
             >
               login
             </button>
-            <button class="h-10 w-32 uppercase text-white font-bold" @click.stop="openRegDialog()">
+            <button
+              class="h-10 w-32 uppercase text-white font-bold"
+              @click.stop="openRegDialog()"
+            >
               register
             </button>
           </div>
